@@ -12,6 +12,11 @@ export const antdTheme: ThemeConfig = {
       itemHoverColor: Theme.core.colorSecondary,
       itemActiveColor: Theme.core.colorSecondary,
     },
-    Menu: {},
+    Menu: {
+      itemSelectedBg: 'transparent',
+      itemSelectedColor: Theme.core.colorSecondary,
+      itemColor: Theme.core.colorTextSecondary,
+      itemActiveBg: 'transparent',
+    },
   },
 };

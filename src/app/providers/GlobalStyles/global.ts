@@ -113,4 +113,10 @@ export const GlobalStyle = createGlobalStyle`
 
     table {
         width: 100%;
-    }`;
+    }
+    
+    & .ant-menu{
+        border-inline-end: 0 !important;
+    }
+    
+    `;

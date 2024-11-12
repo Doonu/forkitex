@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.ts",
   "scripts": {
-    "start": "webpack serve --env port=3000 local=true",
+    "start": "webpack serve --env port=3000 mode=development local=true",
     "lint": "eslint",
     "clear": "yarn cache clean && rm -rf ./node_modules/ yarn.lock && yarn",
     "lint:fix": "eslint --fix \"src/**/*.{js,jsx,ts,tsx,json}\"",
@@ -19,6 +19,7 @@
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.15",
     "antd": "^5.22.0",
     "dotenv": "^16.4.5",
+    "fork-ts-checker-webpack-plugin": "^9.0.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-refresh": "^0.14.2",

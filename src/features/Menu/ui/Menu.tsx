@@ -3,6 +3,7 @@ import { Tabs } from 'antd';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { SMenu } from './menu.styles';
 import { itemsMenu } from '../lib/itemsMenu';
 import { useMenuActive } from '../lib/useMenuActive';
 
@@ -16,7 +17,13 @@ export const Menu = () => {
       {!isTablets && (
         <Tabs items={itemsMenu} activeKey={activeKey} onTabClick={(key) => navigate(`/${key}`)} />
       )}
-      {isTablets && <div>пупу</div>}
+      {isTablets && (
+        <SMenu
+          onClick={({ key }) => navigate(`/${key}`)}
+          defaultSelectedKeys={[activeKey]}
+          items={itemsMenu}
+        />
+      )}
     </>
   );
 };

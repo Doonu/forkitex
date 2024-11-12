@@ -3,19 +3,18 @@ import React, { useEffect, useState } from 'react';
 
 import { City, SLocation } from './location.styles';
 
-const Location = () => {
+export const Location = () => {
   const [city, setCity] = useState('');
   const [error, setError] = useState('');
 
-  useEffect(() => {
+  const fetchLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         async (position) => {
           const { latitude, longitude } = position.coords;
           try {
             const response = await fetch(
-              `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}`
-              // `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=dd29a10cbe6e4edbb76af4ebec592a39`
+              `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=dd29a10cbe6e4edbb76af4ebec592a39`
             );
             const data = await response.json();
             if (data.results && data.results[0]) {
@@ -35,6 +34,10 @@ const Location = () => {
     } else {
       setError('Геолокация не поддерживается вашим браузером');
     }
+  };
+
+  useEffect(() => {
+    fetchLocation();
   }, []);
 
   return (
@@ -44,5 +47,3 @@ const Location = () => {
     </SLocation>
   );
 };
-
-export default Location;

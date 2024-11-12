@@ -1,11 +1,14 @@
-import { Menu } from '@features/Menu';
-import { Logo } from '@shared/ui';
+import { Menu, BurgerMenu } from '@features/Menu';
+import { BellIcon, MenuIcon } from '@shared/assets';
+import { useDevice } from '@shared/hooks';
+import { Logo, Location } from '@shared/ui';
 import React, { useState } from 'react';
 
-import { SBottomHeader, SHeader, STopHeader, STopHeaderContainer } from './header.styles';
-import Location from './Location/Location';
+import { SBottomHeader, SHeader, SInfo, STopHeader, STopHeaderContainer } from './header.styles';
 
 export const Header = () => {
+  const { isTablets } = useDevice();
+
   const [isOpenBurgerMenu, setIsOpenBurgerMenu] = useState(false);
 
   const handlerOpenMenu = () => {
@@ -17,12 +20,23 @@ export const Header = () => {
       <STopHeaderContainer>
         <STopHeader>
           <Logo />
-          <Location />
+          <SInfo>
+            {!isTablets && <Location />}
+            {!isOpenBurgerMenu && <BellIcon count={5} />}
+            {isTablets && (
+              <>
+                <MenuIcon isOpen={isOpenBurgerMenu} onClick={handlerOpenMenu} />
+                <BurgerMenu isOpen={isOpenBurgerMenu} onClose={handlerOpenMenu} />
+              </>
+            )}
+          </SInfo>
         </STopHeader>
       </STopHeaderContainer>
-      <SBottomHeader>
-        <Menu />
-      </SBottomHeader>
+      {!isTablets && (
+        <SBottomHeader>
+          <Menu />
+        </SBottomHeader>
+      )}
     </SHeader>
   );
 };

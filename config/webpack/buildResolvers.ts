@@ -8,6 +8,9 @@ export function buildResolvers(options: BuildOptions): ResolveOptions {
   return {
     extensions: ['.tsx', '.ts', '.js'],
     modules: [options.paths.src, 'node_modules'],
+    fallback: {
+      process: require.resolve('process/browser.js'),
+    },
     alias: {
       '@app': path.resolve('src/app'),
       '@processes': path.resolve('src/processes'),

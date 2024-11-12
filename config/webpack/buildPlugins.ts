@@ -1,6 +1,7 @@
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import dotenv from 'dotenv';
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import HTMLWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import webpack from 'webpack';
@@ -14,6 +15,7 @@ export function buildPlugins({
 }: BuildOptions): webpack.WebpackPluginInstance[] {
   const envFile = isDevelopment ? 'production' : 'development';
   const envFilePath = local ? './.env.development.local' : `./.env.${envFile}`;
+
   const env = dotenv.config({ path: envFilePath }).parsed || {};
 
   const envKeys = Object.keys(env).reduce(
@@ -55,6 +57,7 @@ export function buildPlugins({
 
   if (local) {
     plugins.push(new ReactRefreshWebpackPlugin());
+    plugins.push(new ForkTsCheckerWebpackPlugin());
   }
 
   return plugins;

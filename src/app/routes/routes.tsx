@@ -1,4 +1,3 @@
-import MockPage from '@pages/MockPage';
 import { NotFoundPage } from '@pages/NotFoundPage';
 import { ERoutes } from '@shared/config';
 import { lazy } from 'react';
