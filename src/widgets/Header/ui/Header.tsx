@@ -1,5 +1,6 @@
+import { Notification } from '@entities/Notification';
 import { Menu, BurgerMenu } from '@features/Menu';
-import { BellIcon, MenuIcon } from '@shared/assets';
+import { MenuIcon } from '@shared/assets';
 import { useDevice } from '@shared/hooks';
 import { Logo, Location } from '@shared/ui';
 import React, { useState } from 'react';
@@ -22,7 +23,7 @@ export const Header = () => {
           <Logo />
           <SInfo>
             {!isTablets && <Location />}
-            {!isOpenBurgerMenu && <BellIcon count={5} />}
+            {!isOpenBurgerMenu && <Notification count={5} />}
             {isTablets && (
               <>
                 <MenuIcon isOpen={isOpenBurgerMenu} onClick={handlerOpenMenu} />

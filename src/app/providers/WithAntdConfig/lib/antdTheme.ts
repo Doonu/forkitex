@@ -18,5 +18,9 @@ export const antdTheme: ThemeConfig = {
       itemColor: Theme.core.colorTextSecondary,
       itemActiveBg: 'transparent',
     },
+    Badge: {
+      colorInfo: '#3FCBFF',
+      colorBorderBg: 'transparent',
+    },
   },
 };
