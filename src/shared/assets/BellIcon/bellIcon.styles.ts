@@ -17,4 +17,5 @@ export const SBellIcon = styled.svg`
   height: 27px;
   cursor: pointer;
   animation: ${shake} 1.5s ease infinite;
+  margin-top: 7px;
 `;

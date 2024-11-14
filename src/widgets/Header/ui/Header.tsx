@@ -23,7 +23,7 @@ export const Header = () => {
           <Logo />
           <SInfo>
             {!isTablets && <Location />}
-            {!isOpenBurgerMenu && <Notification count={5} />}
+            {!isOpenBurgerMenu && <Notification />}
             {isTablets && (
               <>
                 <MenuIcon isOpen={isOpenBurgerMenu} onClick={handlerOpenMenu} />

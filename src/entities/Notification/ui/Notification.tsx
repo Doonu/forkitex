@@ -1,10 +1,8 @@
 import { BellIcon } from '@shared/assets';
 import { Badge } from 'antd';
-import React, { FC, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-import { INotification } from '../model/notification.types';
-
-export const Notification: FC<INotification> = ({ count }) => {
+export const Notification = () => {
   const [showBadge, setShowBadge] = useState(false);
 
   useEffect(() => {
